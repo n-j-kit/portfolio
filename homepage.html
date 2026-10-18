@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A portfolio for NJ Kit, focused on thoughtful digital craft and useful things for the web."
+    >
+    <meta name="theme-color" content="#f4f2ed">
+    <title>NJ Kit — Digital craft</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4f2ed;
+        --ink: #20221f;
+        --muted: #74776e;
+        --line: #deded6;
+        --accent: #cb563b;
+        --forest: #243c35;
+        --lime: #d9e77a;
+        --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        width: min(1160px, calc(100% - 64px));
+        margin-inline: auto;
+      }
+
+      .site-header {
+        display: flex;
+        min-height: 88px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .wordmark {
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        text-decoration: none;
+      }
+
+      .wordmark-mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--serif);
+        font-size: 17px;
+        letter-spacing: -0.08em;
+      }
+
+      .wordmark-name {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+      }
+
+      .site-nav a {
+        color: #53564f;
+        font-size: 13px;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus-visible {
+        color: var(--accent);
+      }
+
+      .site-nav .nav-contact {
+        padding: 11px 17px;
+        border: 1px solid #bfc0b8;
+        border-radius: 999px;
+        color: var(--ink);
+      }
+
+      .hero {
+        display: grid;
+        min-height: 620px;
+        grid-template-columns: 1fr 0.88fr;
+        align-items: center;
+        gap: 48px;
+        padding-block: 76px 92px;
+      }
+
+      .eyebrow,
+      .section-kicker {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #78926e;
+        content: "";
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 620px;
+        margin-block: 27px 22px;
+        font-family: var(--serif);
+        font-size: clamp(56px, 7.2vw, 91px);
+        font-weight: 400;
+        letter-spacing: -0.075em;
+        line-height: 0.99;
+      }
+
+      h1 em {
+        color: var(--accent);
+        font-weight: 400;
+      }
+
+      .hero-copy {
+        max-width: 440px;
+        margin-bottom: 30px;
+        color: #666961;
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 23px;
+      }
+
+      .button-link {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 0 19px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: white;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 160ms ease, transform 160ms ease;
+      }
+
+      .button-link:hover,
+      .button-link:focus-visible {
+        transform: translateY(-2px);
+        background: var(--accent);
+      }
+
+      .button-link span {
+        font-size: 17px;
+        line-height: 1;
+      }
+
+      .text-link {
+        color: #53564f;
+        font-size: 13px;
+        text-decoration-color: #b2b3aa;
+        text-underline-offset: 4px;
+      }
+
+      .hero-art {
+        position: relative;
+        display: grid;
+        min-height: 414px;
+        overflow: hidden;
+        place-items: center;
+        border-radius: 4px 150px 4px 4px;
+        background:
+          radial-gradient(ellipse at 69% 22%, rgb(255 255 255 / 17%), transparent 34%),
+          var(--forest);
+        isolation: isolate;
+      }
+
+      .hero-art::before {
+        position: absolute;
+        z-index: -1;
+        top: -63px;
+        right: -39px;
+        width: 255px;
+        height: 255px;
+        border: 1px solid rgb(255 255 255 / 19%);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .hero-art::after {
+        position: absolute;
+        z-index: -1;
+        right: 38px;
+        bottom: 34px;
+        width: 142px;
+        height: 142px;
+        border: 1px solid rgb(255 255 255 / 17%);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .art-caption {
+        position: absolute;
+        top: 27px;
+        left: 30px;
+        color: rgb(255 255 255 / 62%);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .art-orbit {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 283px;
+        height: 283px;
+        border: 1px solid rgb(255 255 255 / 22%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .art-orbit::before,
+      .art-orbit::after {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--lime);
+        content: "";
+      }
+
+      .art-orbit::before {
+        top: 37px;
+        left: 50px;
+      }
+
+      .art-orbit::after {
+        right: 17px;
+        bottom: 75px;
+        width: 5px;
+        height: 5px;
+        background: rgb(255 255 255 / 80%);
+      }
+
+      .art-sun {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 172px;
+        height: 172px;
+        border-radius: 50%;
+        background: var(--lime);
+        box-shadow: 0 0 75px rgb(217 231 122 / 19%);
+        transform: translate(-50%, -50%);
+      }
+
+      .art-sun::before,
+      .art-sun::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 215px;
+        height: 1px;
+        background: rgb(36 60 53 / 32%);
+        content: "";
+      }
+
+      .art-sun::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .art-sun::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      .art-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: grid;
+        width: 94px;
+        height: 94px;
+        place-items: center;
+        border: 1px solid rgb(32 34 31 / 19%);
+        border-radius: 50%;
+        background: #e9edbc;
+        color: var(--forest);
+        font-family: var(--serif);
+        font-size: 37px;
+        letter-spacing: -0.1em;
+        transform: translate(-50%, -50%);
+      }
+
+      .art-note {
+        position: absolute;
+        right: 30px;
+        bottom: 27px;
+        color: rgb(255 255 255 / 66%);
+        font-family: var(--serif);
+        font-size: 14px;
+        font-style: italic;
+      }
+
+      .work-section {
+        padding-block: 66px 86px;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 29px;
+      }
+
+      .section-heading h2,
+      .about-copy h2,
+      .contact-section h2 {
+        margin: 13px 0 0;
+        font-family: var(--serif);
+        font-size: clamp(34px, 4.2vw, 48px);
+        font-weight: 400;
+        letter-spacing: -0.055em;
+        line-height: 1.08;
+      }
+
+      .section-heading > p {
+        max-width: 270px;
+        margin-bottom: 3px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .work-card {
+        min-width: 0;
+      }
+
+      .work-preview {
+        position: relative;
+        display: grid;
+        min-height: 222px;
+        overflow: hidden;
+        place-items: center;
+        border-radius: 3px;
+      }
+
+      .preview-interface {
+        background: #e5d9c6;
+      }
+
+      .browser-window {
+        width: 72%;
+        overflow: hidden;
+        border: 1px solid rgb(32 34 31 / 12%);
+        border-radius: 5px;
+        background: #faf8f2;
+        box-shadow: 0 14px 38px rgb(56 47 34 / 12%);
+        transform: rotate(-4deg);
+      }
+
+      .browser-top {
+        display: flex;
+        height: 22px;
+        align-items: center;
+        gap: 4px;
+        padding-inline: 9px;
+        border-bottom: 1px solid #e8e5dc;
+      }
+
+      .browser-top i {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #c1bfb5;
+      }
+
+      .browser-content {
+        display: grid;
+        min-height: 125px;
+        grid-template-columns: 1fr 0.8fr;
+        gap: 12px;
+        padding: 16px 13px;
+      }
+
+      .browser-lines {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .browser-lines b {
+        width: 76%;
+        height: 6px;
+        border-radius: 99px;
+        background: #303a33;
+      }
+
+      .browser-lines b:nth-child(2) {
+        width: 92%;
+        height: 4px;
+        background: #bbb9ae;
+      }
+
+      .browser-lines b:nth-child(3) {
+        width: 59%;
+        height: 4px;
+        background: #d5d2c8;
+      }
+
+      .browser-image {
+        border-radius: 3px 31px 3px 3px;
+        background: linear-gradient(145deg, #c85c42 0 42%, #edc178 42% 67%, #71836b 67%);
+      }
+
+      .preview-experiment {
+        background: #dce4ce;
+      }
+
+      .experiment-shape {
+        position: relative;
+        width: 130px;
+        height: 130px;
+        border: 1px solid #48634e;
+        border-radius: 50%;
+      }
+
+      .experiment-shape::before,
+      .experiment-shape::after {
+        position: absolute;
+        inset: 17px -14px;
+        border: 1px solid #48634e;
+        border-radius: 50%;
+        content: "";
+        transform: rotate(52deg);
+      }
+
+      .experiment-shape::after {
+        transform: rotate(-52deg);
+      }
+
+      .experiment-dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--accent);
+        transform: translate(-50%, -50%);
+      }
+
+      .preview-tool {
+        background: #e4d8df;
+      }
+
+      .tool-card {
+        display: grid;
+        width: 68%;
+        min-height: 139px;
+        grid-template-columns: 1fr 0.7fr;
+        align-items: center;
+        gap: 10px;
+        padding: 17px;
+        border: 1px solid rgb(32 34 31 / 10%);
+        border-radius: 5px;
+        background: #faf8f2;
+        box-shadow: 0 14px 38px rgb(56 47 34 / 10%);
+        transform: rotate(3deg);
+      }
+
+      .tool-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .tool-copy b {
+        width: 69%;
+        height: 7px;
+        border-radius: 99px;
+        background: #303a33;
+      }
+
+      .tool-copy span {
+        width: 96%;
+        height: 4px;
+        border-radius: 99px;
+        background: #d3d0c7;
+      }
+
+      .tool-copy span:last-child {
+        width: 65%;
+      }
+
+      .tool-tile {
+        display: grid;
+        aspect-ratio: 1;
+        place-items: center;
+        border-radius: 50%;
+        background: #d9e77a;
+        color: #344439;
+        font-family: var(--serif);
+        font-size: 31px;
+      }
+
+      .work-meta {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 16px;
+      }
+
+      .work-meta h3 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .work-meta span {
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .work-card > p {
+        margin-block: 7px 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.65;
+      }
+
+      .about-section {
+        display: grid;
+        grid-template-columns: 0.7fr 1fr;
+        gap: 80px;
+        padding-block: 66px 75px;
+        border-top: 1px solid var(--line);
+      }
+
+      .about-copy {
+        max-width: 560px;
+      }
+
+      .about-copy p {
+        margin-block: 18px 0;
+        color: #666961;
+        font-size: 15px;
+        line-height: 1.85;
+      }
+
+      .contact-section {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 36px 40px;
+        border-radius: 4px;
+        background: #e9e6dd;
+      }
+
+      .contact-section h2 {
+        max-width: 530px;
+        font-size: clamp(32px, 4vw, 44px);
+      }
+
+      .contact-section .section-kicker {
+        color: #77796f;
+      }
+
+      .site-footer {
+        display: flex;
+        min-height: 90px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .footer-note {
+        margin: 0;
+      }
+
+      .footer-link {
+        text-decoration-color: #b2b3aa;
+        text-underline-offset: 3px;
+      }
+
+      @media (min-width: 1200px) {
+        .hero {
+          min-height: 670px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .page-shell {
+          width: min(calc(100% - 40px), 560px);
+        }
+
+        .site-header {
+          min-height: 72px;
+        }
+
+        .site-nav {
+          gap: 17px;
+        }
+
+        .site-nav a {
+          font-size: 12px;
+        }
+
+        .site-nav .nav-contact {
+          padding: 9px 12px;
+        }
+
+        .hero {
+          min-height: 0;
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding-block: 72px 68px;
+        }
+
+        h1 {
+          max-width: 500px;
+          font-size: clamp(58px, 12vw, 78px);
+        }
+
+        .hero-art {
+          min-height: 360px;
+        }
+
+        .work-section {
+          padding-block: 55px 63px;
+        }
+
+        .work-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .work-preview {
+          min-height: 250px;
+        }
+
+        .about-section {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding-block: 55px 60px;
+        }
+
+        .contact-section {
+          align-items: start;
+          flex-direction: column;
+          padding: 29px 25px;
+        }
+      }
+
+      @media (max-width: 430px) {
+        .page-shell {
+          width: calc(100% - 36px);
+        }
+
+        .wordmark-name {
+          font-size: 11px;
+        }
+
+        .site-nav {
+          gap: 13px;
+        }
+
+        .site-nav a {
+          font-size: 11px;
+        }
+
+        .site-nav .nav-contact {
+          padding: 8px 10px;
+        }
+
+        .hero {
+          padding-top: 58px;
+        }
+
+        h1 {
+          font-size: 58px;
+        }
+
+        .hero-art {
+          min-height: 310px;
+          border-top-right-radius: 112px;
+        }
+
+        .art-orbit {
+          width: 240px;
+          height: 240px;
+        }
+
+        .art-sun {
+          width: 145px;
+          height: 145px;
+        }
+
+        .art-center {
+          width: 80px;
+          height: 80px;
+          font-size: 32px;
+        }
+
+        .section-heading {
+          align-items: start;
+          flex-direction: column;
+          gap: 13px;
+        }
+
+        .section-heading > p {
+          margin: 0;
+        }
+
+        .work-preview {
+          min-height: 218px;
+        }
+
+        .site-footer {
+          align-items: start;
+          flex-direction: column;
+          justify-content: center;
+          padding-block: 20px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header page-shell">
+      <a class="wordmark" href="#home" aria-label="NJ Kit home">
+        <span class="wordmark-mark" aria-hidden="true">nj</span>
+        <span class="wordmark-name">NJ Kit</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a class="nav-contact" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero page-shell" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">Independent digital practice</p>
+          <h1 id="hero-title">Making the web feel a little more <em>human.</em></h1>
+          <p class="hero-copy">
+            Thoughtful design, considered code, and useful things made for the
+            internet. A small portfolio of ideas, interfaces, and experiments.
+          </p>
+          <div class="hero-actions">
+            <a class="button-link" href="#work">Explore the work <span aria-hidden="true">↘</span></a>
+            <a class="text-link" href="#about">A little about me</a>
+          </div>
+        </div>
+
+        <div class="hero-art" role="img" aria-label="Abstract lime sun and orbit illustration on a deep green background">
+          <span class="art-caption">A practice in progress</span>
+          <span class="art-orbit" aria-hidden="true"></span>
+          <span class="art-sun" aria-hidden="true"></span>
+          <span class="art-center" aria-hidden="true">nj</span>
+          <span class="art-note">Curiosity, made visible.</span>
+        </div>
+      </section>
+
+      <section class="work-section page-shell" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">The good stuff</p>
+            <h2 id="work-title">What I like to make</h2>
+          </div>
+          <p>A few corners of the creative process, from first sketch to finished detail.</p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="work-preview preview-interface" aria-hidden="true">
+              <div class="browser-window">
+                <div class="browser-top"><i></i><i></i><i></i></div>
+                <div class="browser-content">
+                  <div class="browser-lines"><b></b><b></b><b></b></div>
+                  <div class="browser-image"></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-meta">
+              <h3>Digital experiences</h3>
+              <span>01 / Design</span>
+            </div>
+            <p>Clear, characterful interfaces that make everyday tasks feel effortless.</p>
+          </article>
+
+          <article class="work-card">
+            <div class="work-preview preview-experiment" aria-hidden="true">
+              <div class="experiment-shape"><span class="experiment-dot"></span></div>
+            </div>
+            <div class="work-meta">
+              <h3>Visual experiments</h3>
+              <span>02 / Play</span>
+            </div>
+            <p>Small explorations in shape, motion, type, and the happy accidents between.</p>
+          </article>
+
+          <article class="work-card">
+            <div class="work-preview preview-tool" aria-hidden="true">
+              <div class="tool-card">
+                <div class="tool-copy"><b></b><span></span><span></span></div>
+                <div class="tool-tile">↗</div>
+              </div>
+            </div>
+            <div class="work-meta">
+              <h3>Useful little tools</h3>
+              <span>03 / Build</span>
+            </div>
+            <p>Practical, carefully made software that solves a real problem simply.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-section page-shell" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="section-kicker">A little context</p>
+          <h2 id="about-title">Good work starts with paying attention.</h2>
+        </div>
+        <div class="about-copy">
+          <p>
+            I’m NJ Kit. I’m interested in the details that make digital things
+            feel intuitive, distinctive, and a pleasure to use.
+          </p>
+          <p>
+            This is a home for work in progress and ideas worth sharing — made
+            with care, curiosity, and a healthy respect for keeping things simple.
+          </p>
+        </div>
+      </section>
+
+      <section class="contact-section page-shell" id="contact" aria-labelledby="contact-title">
+        <div>
+          <p class="section-kicker">Have something in mind?</p>
+          <h2 id="contact-title">Let’s make something thoughtful.</h2>
+        </div>
+        <a
+          class="button-link"
+          href="https://github.com/n-j-kit"
+          target="_blank"
+          rel="noreferrer"
+        >Find me on GitHub <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer page-shell">
+      <p class="footer-note">© <span id="year">2026</span> NJ Kit. Made with intention.</p>
+      <a class="footer-link" href="#home">Back to top ↑</a>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
