@@ -225,6 +225,7 @@
       }
 
       .about-resume {
+        margin-top: 8px;
         border: 0;
         cursor: pointer;
         font-family: inherit;
@@ -453,176 +454,27 @@
       }
 
       .work-content {
+        display: grid;
+        gap: 12px;
         margin-top: 14px;
       }
 
-      .work-preview {
-        position: relative;
+      .work-caption,
+      .work-explanation {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.65;
+      }
+
+      .work-media-placeholder {
         display: grid;
-        min-height: 222px;
-        overflow: hidden;
+        min-height: 180px;
         place-items: center;
+        border: 1px dashed #bfc0b8;
         border-radius: 3px;
-      }
-
-      .preview-interface {
-        background: #e5d9c6;
-      }
-
-      .browser-window {
-        width: 72%;
-        overflow: hidden;
-        border: 1px solid rgb(32 34 31 / 12%);
-        border-radius: 5px;
-        background: #faf8f2;
-        box-shadow: 0 14px 38px rgb(56 47 34 / 12%);
-        transform: rotate(-4deg);
-      }
-
-      .browser-top {
-        display: flex;
-        height: 22px;
-        align-items: center;
-        gap: 4px;
-        padding-inline: 9px;
-        border-bottom: 1px solid #e8e5dc;
-      }
-
-      .browser-top i {
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: #c1bfb5;
-      }
-
-      .browser-content {
-        display: grid;
-        min-height: 125px;
-        grid-template-columns: 1fr 0.8fr;
-        gap: 12px;
-        padding: 16px 13px;
-      }
-
-      .browser-lines {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 8px;
-      }
-
-      .browser-lines b {
-        width: 76%;
-        height: 6px;
-        border-radius: 99px;
-        background: #303a33;
-      }
-
-      .browser-lines b:nth-child(2) {
-        width: 92%;
-        height: 4px;
-        background: #bbb9ae;
-      }
-
-      .browser-lines b:nth-child(3) {
-        width: 59%;
-        height: 4px;
-        background: #d5d2c8;
-      }
-
-      .browser-image {
-        border-radius: 3px 31px 3px 3px;
-        background: linear-gradient(145deg, #c85c42 0 42%, #edc178 42% 67%, #71836b 67%);
-      }
-
-      .preview-experiment {
-        background: #dce4ce;
-      }
-
-      .experiment-shape {
-        position: relative;
-        width: 130px;
-        height: 130px;
-        border: 1px solid #48634e;
-        border-radius: 50%;
-      }
-
-      .experiment-shape::before,
-      .experiment-shape::after {
-        position: absolute;
-        inset: 17px -14px;
-        border: 1px solid #48634e;
-        border-radius: 50%;
-        content: "";
-        transform: rotate(52deg);
-      }
-
-      .experiment-shape::after {
-        transform: rotate(-52deg);
-      }
-
-      .experiment-dot {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: var(--accent);
-        transform: translate(-50%, -50%);
-      }
-
-      .preview-tool {
-        background: #e4d8df;
-      }
-
-      .tool-card {
-        display: grid;
-        width: 68%;
-        min-height: 139px;
-        grid-template-columns: 1fr 0.7fr;
-        align-items: center;
-        gap: 10px;
-        padding: 17px;
-        border: 1px solid rgb(32 34 31 / 10%);
-        border-radius: 5px;
-        background: #faf8f2;
-        box-shadow: 0 14px 38px rgb(56 47 34 / 10%);
-        transform: rotate(3deg);
-      }
-
-      .tool-copy {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .tool-copy b {
-        width: 69%;
-        height: 7px;
-        border-radius: 99px;
-        background: #303a33;
-      }
-
-      .tool-copy span {
-        width: 96%;
-        height: 4px;
-        border-radius: 99px;
-        background: #d3d0c7;
-      }
-
-      .tool-copy span:last-child {
-        width: 65%;
-      }
-
-      .tool-tile {
-        display: grid;
-        aspect-ratio: 1;
-        place-items: center;
-        border-radius: 50%;
-        background: #d9e77a;
-        color: #344439;
-        font-family: var(--serif);
-        font-size: 31px;
+        color: var(--muted);
+        font-size: 12px;
       }
 
       .work-meta {
@@ -644,13 +496,6 @@
         font-size: 11px;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-      }
-
-      .work-content > p {
-        margin-block: 7px 0;
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.65;
       }
 
       .about-section {
@@ -762,10 +607,6 @@
           gap: 28px;
         }
 
-        .work-preview {
-          min-height: 250px;
-        }
-
         .about-section {
           grid-template-columns: 1fr;
           gap: 20px;
@@ -837,10 +678,6 @@
 
         .section-heading > p {
           margin: 0;
-        }
-
-        .work-preview {
-          min-height: 218px;
         }
 
         .site-footer {
@@ -932,8 +769,7 @@
       }
 
       .eyebrow::before,
-      .hero-art,
-      .work-preview {
+      .hero-art {
         display: none;
       }
 
@@ -1020,32 +856,30 @@
 
       .work-meta {
         display: grid;
-        grid-template-columns: 48px 1fr 20px;
+        grid-template-columns: 1fr 20px;
         column-gap: 12px;
         align-items: start;
       }
 
-      .work-meta span {
-        grid-column: 1;
-        padding-top: 3px;
-        font-size: 11px;
-        letter-spacing: 0;
-        text-transform: none;
-      }
-
       .work-meta h3 {
-        grid-column: 2;
+        grid-column: 1;
         font-size: 14px;
       }
 
       .work-card summary::after {
-        grid-column: 3;
+        grid-column: 2;
         grid-row: 1;
       }
 
-      .work-content > p {
+      .work-caption,
+      .work-explanation {
         margin: 8px 32px 0 60px;
         font-size: 13px;
+      }
+
+      .work-media-placeholder {
+        min-height: 180px;
+        margin-inline: 60px 32px;
       }
 
       .about-section {
@@ -1205,19 +1039,11 @@
             <details>
               <summary class="work-meta">
                 <h3>Digital experiences</h3>
-                <span>01 / Design</span>
               </summary>
               <div class="work-content">
-                <div class="work-preview preview-interface" aria-hidden="true">
-                  <div class="browser-window">
-                    <div class="browser-top"><i></i><i></i><i></i></div>
-                    <div class="browser-content">
-                      <div class="browser-lines"><b></b><b></b><b></b></div>
-                      <div class="browser-image"></div>
-                    </div>
-                  </div>
-                </div>
-                <p>Clear, characterful interfaces that make everyday tasks feel effortless.</p>
+                <p class="work-caption">Caption</p>
+                <div class="work-media-placeholder">Image or link</div>
+                <p class="work-explanation">Explanation</p>
               </div>
             </details>
           </article>
@@ -1226,13 +1052,11 @@
             <details>
               <summary class="work-meta">
                 <h3>Visual experiments</h3>
-                <span>02 / Play</span>
               </summary>
               <div class="work-content">
-                <div class="work-preview preview-experiment" aria-hidden="true">
-                  <div class="experiment-shape"><span class="experiment-dot"></span></div>
-                </div>
-                <p>Small explorations in shape, motion, type, and the happy accidents between.</p>
+                <p class="work-caption">Caption</p>
+                <div class="work-media-placeholder">Image or link</div>
+                <p class="work-explanation">Explanation</p>
               </div>
             </details>
           </article>
@@ -1241,16 +1065,11 @@
             <details>
               <summary class="work-meta">
                 <h3>Useful little tools</h3>
-                <span>03 / Build</span>
               </summary>
               <div class="work-content">
-                <div class="work-preview preview-tool" aria-hidden="true">
-                  <div class="tool-card">
-                    <div class="tool-copy"><b></b><span></span><span></span></div>
-                    <div class="tool-tile">↗</div>
-                  </div>
-                </div>
-                <p>Practical, carefully made software that solves a real problem simply.</p>
+                <p class="work-caption">Caption</p>
+                <div class="work-media-placeholder">Image or link</div>
+                <p class="work-explanation">Explanation</p>
               </div>
             </details>
           </article>
