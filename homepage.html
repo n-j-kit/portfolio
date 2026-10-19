@@ -155,6 +155,28 @@
         line-height: 0.99;
       }
 
+      .hero-title-row {
+        display: flex;
+        align-items: center;
+        gap: clamp(12px, 2vw, 24px);
+      }
+
+      .hero-title-row h1 {
+        flex: 1 1 auto;
+        max-width: none;
+        min-width: 0;
+      }
+
+      .hero-profile {
+        width: clamp(64px, 8.5vw, 100px);
+        flex: 0 0 auto;
+        aspect-ratio: 1;
+        border: 2px solid var(--ink);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--ink);
+        object-fit: cover;
+      }
+
       h1 em {
         color: var(--accent);
         font-weight: 400;
@@ -1087,6 +1109,14 @@
           padding-block: 64px;
         }
 
+        .hero-title-row h1 {
+          font-size: clamp(38px, 12vw, 48px);
+        }
+
+        .hero-profile {
+          width: 60px;
+        }
+
         h1 {
           font-size: 48px;
         }
@@ -1115,7 +1145,10 @@
       <section class="hero page-shell" aria-labelledby="hero-title">
         <div class="hero-content">
           <p class="eyebrow"> UTK Geography Student | Mapping and Data Analysis | Interested in Urban Studies</p>
-          <h1 id="hero-title">Nathan Kit</h1>
+          <div class="hero-title-row">
+            <h1 id="hero-title">Nathan Kit</h1>
+            <img class="hero-profile" src="linkedin-pfp.jpg" alt="Portrait of Nathan Kit">
+          </div>
           <p class="hero-copy">
             A documentation of my professional experience
           </p>
@@ -1220,7 +1253,7 @@
       <section class="contact-section page-shell" id="connect" aria-labelledby="connect-title">
         <div>
           <p class="section-kicker">Connect</p>
-          <h2 id="connect-title">Find me on Linkedin.</h2>
+          <h2 id="connect-title">Find me on LinkedIn</h2>
         </div>
         <a
           class="button-link"
