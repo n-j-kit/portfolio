@@ -168,11 +168,11 @@
       }
 
       .hero-profile {
-        width: clamp(64px, 8.5vw, 100px);
+        width: clamp(112px, 16vw, 180px);
         flex: 0 0 auto;
-        aspect-ratio: 1;
+        aspect-ratio: 4 / 5;
         border: 2px solid var(--ink);
-        border-radius: 50%;
+        border-radius: 8px;
         box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--ink);
         object-fit: cover;
       }
@@ -222,6 +222,12 @@
       .button-link span {
         font-size: 17px;
         line-height: 1;
+      }
+
+      .about-resume {
+        border: 0;
+        cursor: pointer;
+        font-family: inherit;
       }
 
       .text-link {
@@ -1114,7 +1120,7 @@
         }
 
         .hero-profile {
-          width: 60px;
+          width: 88px;
         }
 
         h1 {
@@ -1181,6 +1187,7 @@
             This document serves as evidence of my experience in data analysis,
             research, and mapping.
           </p>
+          <button class="button-link about-resume" type="button">Resume</button>
         </div>
       </section>
 
