@@ -392,6 +392,42 @@
         min-width: 0;
       }
 
+      .work-card details {
+        min-width: 0;
+      }
+
+      .work-card summary {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .work-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .work-card summary:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      .work-card summary::after {
+        color: var(--muted);
+        content: "+";
+        font-size: 18px;
+      }
+
+      .work-card details[open] summary::after {
+        content: "−";
+      }
+
+      .work-content {
+        margin-top: 14px;
+      }
+
       .work-preview {
         position: relative;
         display: grid;
@@ -582,7 +618,7 @@
         text-transform: uppercase;
       }
 
-      .work-card > p {
+      .work-content > p {
         margin-block: 7px 0;
         color: var(--muted);
         font-size: 12px;
@@ -950,19 +986,19 @@
 
       .work-card {
         display: grid;
-        grid-template-columns: 48px 1fr;
-        column-gap: 12px;
         padding-block: 17px;
         border-top: 1px solid var(--line);
       }
 
       .work-meta {
-        display: contents;
+        display: grid;
+        grid-template-columns: 48px 1fr 20px;
+        column-gap: 12px;
+        align-items: start;
       }
 
       .work-meta span {
         grid-column: 1;
-        grid-row: 1 / span 2;
         padding-top: 3px;
         font-size: 11px;
         letter-spacing: 0;
@@ -974,9 +1010,13 @@
         font-size: 14px;
       }
 
-      .work-card > p {
-        grid-column: 2;
-        margin-top: 5px;
+      .work-card summary::after {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .work-content > p {
+        margin: 8px 32px 0 60px;
         font-size: 13px;
       }
 
@@ -1092,13 +1132,17 @@
 
       <section class="about-section page-shell" id="about" aria-labelledby="about-title">
         <div>
-          <p class="section-kicker">A little context</p>
-          <h2 id="about-title">Good work starts with paying attention.</h2>
+          <p class="section-kicker"></p>
+          <h2 id="about-title">About me.</h2>
         </div>
         <div class="about-copy">
           <p>
-            I’m Nathan Kit. I’m interested in the details that make digital things
-            feel intuitive, distinctive, and a pleasure to use.
+            I am a Junior at UT Knoxville, studying Geography with a concentration
+           on Urban Studies. So far, I’ve built data analysis, statistics,
+            and mapping skills through course work, group GIS projects,
+            and a local internship with the Knoxville Utilities Board.
+            I want to further explore urban studies through a Masters program
+           and am looking for suitable graduate programs.
           </p>
           <p>
             This is a home for work in progress and ideas worth sharing — made
@@ -1118,45 +1162,57 @@
 
         <div class="work-grid">
           <article class="work-card">
-            <div class="work-preview preview-interface" aria-hidden="true">
-              <div class="browser-window">
-                <div class="browser-top"><i></i><i></i><i></i></div>
-                <div class="browser-content">
-                  <div class="browser-lines"><b></b><b></b><b></b></div>
-                  <div class="browser-image"></div>
+            <details>
+              <summary class="work-meta">
+                <h3>Digital experiences</h3>
+                <span>01 / Design</span>
+              </summary>
+              <div class="work-content">
+                <div class="work-preview preview-interface" aria-hidden="true">
+                  <div class="browser-window">
+                    <div class="browser-top"><i></i><i></i><i></i></div>
+                    <div class="browser-content">
+                      <div class="browser-lines"><b></b><b></b><b></b></div>
+                      <div class="browser-image"></div>
+                    </div>
+                  </div>
                 </div>
+                <p>Clear, characterful interfaces that make everyday tasks feel effortless.</p>
               </div>
-            </div>
-            <div class="work-meta">
-              <h3>Digital experiences</h3>
-              <span>01 / Design</span>
-            </div>
-            <p>Clear, characterful interfaces that make everyday tasks feel effortless.</p>
+            </details>
           </article>
 
           <article class="work-card">
-            <div class="work-preview preview-experiment" aria-hidden="true">
-              <div class="experiment-shape"><span class="experiment-dot"></span></div>
-            </div>
-            <div class="work-meta">
-              <h3>Visual experiments</h3>
-              <span>02 / Play</span>
-            </div>
-            <p>Small explorations in shape, motion, type, and the happy accidents between.</p>
+            <details>
+              <summary class="work-meta">
+                <h3>Visual experiments</h3>
+                <span>02 / Play</span>
+              </summary>
+              <div class="work-content">
+                <div class="work-preview preview-experiment" aria-hidden="true">
+                  <div class="experiment-shape"><span class="experiment-dot"></span></div>
+                </div>
+                <p>Small explorations in shape, motion, type, and the happy accidents between.</p>
+              </div>
+            </details>
           </article>
 
           <article class="work-card">
-            <div class="work-preview preview-tool" aria-hidden="true">
-              <div class="tool-card">
-                <div class="tool-copy"><b></b><span></span><span></span></div>
-                <div class="tool-tile">↗</div>
+            <details>
+              <summary class="work-meta">
+                <h3>Useful little tools</h3>
+                <span>03 / Build</span>
+              </summary>
+              <div class="work-content">
+                <div class="work-preview preview-tool" aria-hidden="true">
+                  <div class="tool-card">
+                    <div class="tool-copy"><b></b><span></span><span></span></div>
+                    <div class="tool-tile">↗</div>
+                  </div>
+                </div>
+                <p>Practical, carefully made software that solves a real problem simply.</p>
               </div>
-            </div>
-            <div class="work-meta">
-              <h3>Useful little tools</h3>
-              <span>03 / Build</span>
-            </div>
-            <p>Practical, carefully made software that solves a real problem simply.</p>
+            </details>
           </article>
         </div>
       </section>
