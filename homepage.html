@@ -485,6 +485,41 @@
         outline-offset: 3px;
       }
 
+      .work-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .work-gallery figure {
+        min-width: 0;
+        margin: 0;
+      }
+
+      .work-gallery a {
+        display: block;
+      }
+
+      .work-gallery a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .work-gallery img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        background: white;
+      }
+
+      .work-gallery figcaption {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.4;
+      }
+
       .work-meta {
         display: flex;
         align-items: baseline;
@@ -1065,7 +1100,26 @@
               </summary>
               <div class="work-content">
                 <p class="work-caption">An analysis of the socioeconomic status of Baltimore's historic neighborhoods</p>
-                <div class="work-media-placeholder">Image or link</div>
+                <div class="work-gallery" aria-label="Baltimore neighborhood maps">
+                  <figure>
+                    <a href="AddressDensity.png" target="_blank" rel="noreferrer">
+                      <img src="AddressDensity.png" alt="Map of Baltimore address density per square kilometer">
+                    </a>
+                    <figcaption>Address density</figcaption>
+                  </figure>
+                  <figure>
+                    <a href="VacDensity.png" target="_blank" rel="noreferrer">
+                      <img src="VacDensity.png" alt="Map of Baltimore vacant building density per square kilometer">
+                    </a>
+                    <figcaption>Vacancy density</figcaption>
+                  </figure>
+                  <figure>
+                    <a href="VacancyRate.png" target="_blank" rel="noreferrer">
+                      <img src="VacancyRate.png" alt="Map of Baltimore vacant building rate as a percentage">
+                    </a>
+                    <figcaption>Vacancy rate</figcaption>
+                  </figure>
+                </div>
                 <p class="work-explanation">Explanation</p>
               </div>
             </details>
