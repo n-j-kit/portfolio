@@ -482,6 +482,32 @@
         outline-offset: 3px;
       }
 
+      .work-preview {
+        position: relative;
+        height: 320px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        background: white;
+      }
+
+      .work-preview iframe,
+      .work-preview object {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .work-preview-link {
+        display: inline-flex;
+        width: fit-content;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        text-underline-offset: 3px;
+      }
+
       .work-gallery {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1114,7 +1140,10 @@
               </summary>
               <div class="work-content">
                 <p class="work-caption">Program that creates regression models in R</p>
-                <a class="work-media-placeholder" href="columbus-regression.html" target="_blank" rel="noreferrer">View the regression analysis ↗</a>
+                <div class="work-preview">
+                  <iframe src="columbus-regression.html" title="Preview of the Columbus Crime Regression analysis"></iframe>
+                </div>
+                <a class="work-preview-link" href="columbus-regression.html" target="_blank" rel="noreferrer">Open the regression analysis ↗</a>
                 <p class="work-explanation">I created a geographic regression model for a project in a geography quantitative methods course. My goal was to see what socioeconomic factors predict crime in Columbus neighborhoods. I used R Studio with geographic analysis packages to run the regression model and interpreted the results using statistical analysis skills. The result of the project was a program that completes a geographically weighted regression and an HTML files containing the code and written analysis.</p>
               </div>
             </details>
@@ -1127,7 +1156,12 @@
               </summary>
               <div class="work-content">
                 <p class="work-caption">An individual research paper written for an urban studies course</p>
-                <a class="work-media-placeholder" href="urban-studies-paper.pdf" target="_blank" rel="noreferrer">Read the paper (PDF) ↗</a>
+                <div class="work-preview">
+                  <object data="urban-studies-paper.pdf#view=FitH" type="application/pdf">
+                    <p>PDF preview unavailable. <a href="urban-studies-paper.pdf" target="_blank" rel="noreferrer">Open the paper instead</a>.</p>
+                  </object>
+                </div>
+                <a class="work-preview-link" href="urban-studies-paper.pdf" target="_blank" rel="noreferrer">Read the paper (PDF) ↗</a>
                 <p class="work-explanation">
                   I wrote this academic paper for a university course in urban studies, and I individually researched and produced this report. My goal was to explore my personal interests in urban studies by addressing a current issue in the field, and I chose to study private charter cities in Central America. The project required use of my university’s library and other academic databases to find sources discussing the issue. The result of my research was this written report, which details the troubles of private charter cities and relate them to historic challenges. The paper helped develop my research skills and engage me academically with my field of interest.
                 </p>
